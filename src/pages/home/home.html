@@ -1,14 +1,41 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Generator Of Coupons
     </ion-title>
   </ion-navbar>
+
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="segmentPage">
+      <ion-segment-button value="coupons">
+        Coupons
+      </ion-segment-button>
+      <ion-segment-button value="algoritmos">
+        Algoritmos
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+  <div [ngSwitch]="segmentPage">
+    <ion-item-group *ngSwitchCase="'coupons'">
+      <ion-item-divider color="light">Coupons Codes</ion-item-divider>
+      <ion-item *ngFor="let coupon of coupons">{{ coupon.code }}</ion-item>
+      <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-item-group>
+
+    <ion-item-group *ngSwitchCase="'algoritmos'">
+      <ion-item *ngFor="let algoritmo of algoritmos">
+        <ion-label>{{ algoritmo }}</ion-label>
+        <ion-toggle
+          [(ngModel)]="algoritmo == currentAlgoritmo"
+          (ngModelChange)="setAlgoritmoAndUpdateCoupons(algoritmo)"
+          [disabled]="algoritmo == currentAlgoritmo"
+        ></ion-toggle>
+      </ion-item>
+    </ion-item-group>
+  </div>
 </ion-content>
