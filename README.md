@@ -4,9 +4,9 @@ An hybrid app allowing people to generate coupons with switchable algorithms wit
 
 # Extensibility
 
-In this project, you can easyly to add more algorithm by yourself. Only you need to 2 things. 
+In this project, you can easily to add more algorithm by yourself. Only you need to 2 things. 
 
-Exameple:
+Example:
 
 Step 1. create an class in Typescript and put it into the path "src/services/coupon/algoritmos/"
 ```ts
