@@ -1,6 +1,25 @@
-# NurseAide
+# CouponsGenerator
 
 An hybrid app allowing people to generate coupons with switchable algorithms with their smartphones.
+
+# Extensibility
+
+In this project, you can easyly to add more algorithm by yourself. Only you need to 2 things. 
+
+Exameple:
+
+Step 1. create an class in Typescript and put it into the path "src/services/coupon/algoritmos/"
+```ts
+export class YourAlgorithmName implements Algoritmo {
+  begin(): string {
+    return "codeGenerated";
+  }
+}
+```
+Step 2. open the file named "index.ts" is located in "src/services/coupon/algoritmos/" and add your algorithm path.
+```ts
+export { YourAlgorithmName } from "./yourAlgorithmName";
+```
 
 ## Project Summary
 
